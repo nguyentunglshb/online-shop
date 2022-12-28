@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { RouterProvider } from "react-router";
+
+import { router } from "@/routes";
+import { theme } from "@/libs";
+import { AuthContextProvider } from "@/contexts";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="App"></div>;
+  return (
+    <AuthContextProvider>
+      <ChakraProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ChakraProvider>
+    </AuthContextProvider>
+  );
 }
 
 export default App;
