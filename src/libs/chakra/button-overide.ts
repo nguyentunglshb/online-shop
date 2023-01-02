@@ -19,8 +19,19 @@ export const buttonOveride = {
     },
   },
   variants: {
-    disabled: {
+    greyed: {
       bgColor: colorOveride.neutral[3],
+      _hover: {
+        bg: "none",
+        bgColor: colorOveride.neutral[7],
+      },
+      _active: {
+        bg: "none",
+        bgColor: colorOveride.neutral[7],
+      },
+    },
+    disabled: {
+      bgColor: colorOveride.neutral[7],
     },
   },
 };

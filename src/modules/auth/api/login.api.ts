@@ -1,10 +1,17 @@
+import { trackPromise } from "react-promise-tracker";
+import { useMutation } from "react-query";
+
+import { ILoginForm } from "../models";
 import axiosClient from "@/libs/axios/axiosClient";
-import { useMutation, useQueryClient } from "react-query";
 
-const loginRequest = () => axiosClient.post("/auth/login");
+const loginRequest = (body: ILoginForm) =>
+  trackPromise(axiosClient.post("/auth/login", body));
 
-export const useMutationLogin = ({}) => {
-  const queryClient = useQueryClient();
+export const useMutationLogin = () => {
+  const mutation = useMutation({
+    mutationFn: loginRequest,
+    mutationKey: "login",
+  });
 
-  return useMutation;
+  return { mutation };
 };

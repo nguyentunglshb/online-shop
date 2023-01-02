@@ -1,43 +1,51 @@
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
 import {
-  Button,
+  Box,
   InputGroup,
   InputRightElement,
-  Icon,
-  Box,
-  Text,
   Stack,
+  Text,
+  Icon,
+  Button,
   Link as ChakraLink,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon, EmailIcon } from "@chakra-ui/icons";
+import { Controller, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-import { ILoginForm } from "../models";
-import { colorOveride } from "@/libs/chakra/colors-overide";
+import { ISignupForm } from "../models";
 import { CustomInput } from "@/components";
+import { colorOveride } from "@/libs/chakra/colors-overide";
+import { useMutationSignup } from "../api/signup.api";
+import { NavigationFn } from "@/dictionary";
 
 const defaultValues = {
   username: "",
   password: "",
-} as ILoginForm;
+} as ISignupForm;
 
-export const LoginForm = () => {
-  const { handleSubmit, control } = useForm<ILoginForm>({
+export const SignupForm = () => {
+  const { handleSubmit, control } = useForm<ISignupForm>({
     defaultValues,
   });
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const { mutation } = useMutationSignup();
+
+  const { mutate } = mutation;
+
   const togglePassword = () => setShowPassword((prev) => !prev);
 
-  const onSubmit = (data: ILoginForm) => console.log(data);
+  const onSubmit = (data: ISignupForm) => {
+    return mutate(data);
+  };
 
   return (
     <Box w="100%" p="32px">
       <Box>
-        <Text variant="heading">Sign in</Text>
-        <Text p="8px 0">Welcome back! Please enter your details</Text>
+        <Text variant="heading">Sign up</Text>
+        <Text p="8px 0">Welcome to our world!</Text>
       </Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing="20px">
@@ -66,6 +74,7 @@ export const LoginForm = () => {
                   <CustomInput
                     {...field}
                     type={showPassword ? "text" : "password"}
+                    autoComplete="on"
                   />
                   <InputRightElement>
                     <Icon
@@ -81,13 +90,15 @@ export const LoginForm = () => {
               </Box>
             )}
           />
-          <ChakraLink as={Link} to="/" variant="underline" textAlign="right">
-            Forgot your password?
+          <ChakraLink
+            as={Link}
+            to={NavigationFn.LOGIN}
+            variant="underline"
+            textAlign="right"
+          >
+            Already have an account? Sign in
           </ChakraLink>
-          <Button type="submit">Sign in</Button>
-          <ChakraLink as={Link} to="/" textAlign="center">
-            Create account
-          </ChakraLink>
+          <Button type="submit">Sign up</Button>
         </Stack>
       </form>
     </Box>

@@ -6,7 +6,7 @@ const accessToken = localStorage.getItem("accessToken") || "";
 
 const axiosClient = axios.create({
   // baseURL: import.meta.env.BASE_URL,
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",

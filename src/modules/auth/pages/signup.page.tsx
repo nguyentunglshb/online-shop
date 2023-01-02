@@ -1,10 +1,10 @@
 import React from "react";
-import { HStack, Box, VStack, Icon, Image } from "@chakra-ui/react";
+import { HStack, VStack, Icon, Box, Image } from "@chakra-ui/react";
 
-import { LoginForm } from "../components";
 import { images, Logo } from "@/assets";
+import { SignupForm } from "../components/signup-form";
 
-export const Login = () => {
+export const SignUp = () => {
   return (
     <HStack h="100%">
       <Box w="50%" alignSelf="stretch">
@@ -14,7 +14,7 @@ export const Login = () => {
         <Box alignSelf="flex-start" p="32px 32px 0 32px">
           <Icon as={Logo} />
         </Box>
-        <LoginForm />
+        <SignupForm />
       </VStack>
     </HStack>
   );

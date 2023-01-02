@@ -16,5 +16,8 @@ export const linkOveride = {
         textDecoration: "underline",
       },
     },
+    grey: {
+      color: colorOveride.neutral[1],
+    },
   },
 };

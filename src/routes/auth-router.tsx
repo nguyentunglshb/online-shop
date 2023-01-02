@@ -1,6 +1,7 @@
-import { AuthLayout } from "@/layouts";
-import { Login } from "@/modules";
 import { RouteObject } from "react-router";
+
+import { AuthLayout } from "@/layouts";
+import { Login, SignUp } from "@/modules";
 
 export const authRouter = {
   element: <AuthLayout />,
@@ -8,6 +9,10 @@ export const authRouter = {
     {
       path: "login",
       element: <Login />,
+    },
+    {
+      path: "signup",
+      element: <SignUp />,
     },
   ],
 } as RouteObject;
