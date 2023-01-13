@@ -1,5 +1,7 @@
 import authBackground from "./auth.webp";
+import { logo } from "./logo";
 
-export const images = {
+export const Images = {
   authBackground,
+  logo,
 };

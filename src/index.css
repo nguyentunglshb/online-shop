@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap");
 
 :root {
-  font-family: 'Jost', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -19,4 +19,5 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Josefin Sans", sans-serif;
 }
