@@ -9,3 +9,5 @@ export * from "./search";
 export * from "./user";
 
 export * from "./like";
+
+export * from "./menu";

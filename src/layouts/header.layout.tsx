@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { HStack, Icon, Text } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
-import { CartIcon, Images, LikeIcon, SearchIcon, UserIcon } from "@/assets";
+import { CartIcon, Images, MenuIcon, UserIcon } from "@/assets";
+import { NavigationFn } from "@/dictionary";
 
 export const Header = () => {
   const headerRef =
@@ -39,21 +41,38 @@ export const Header = () => {
     //     <Icon as={CartIcon} w={4} h={4} />
     //   </HStack>
     // </HStack>
-    <HStack py={4} justify="space-between" w="min(100%, 1589px)" m="0 auto">
-      <HStack>
-        <Icon as={Images.logo} />
-        <HStack spacing={8} paddingTop="5px">
+    <HStack
+      py={4}
+      justify="space-between"
+      w="min(100%, 1589px)"
+      m="0 auto"
+      h="100px"
+    >
+      <Icon as={Images.logo} />
+
+      <HStack spacing={8} paddingTop="5px">
+        <NavLink to={NavigationFn.HOME}>
+          <Text variant="headerTitle">Home</Text>
+        </NavLink>
+        <NavLink to={NavigationFn.WOMEN}>
           <Text variant="headerTitle">Women</Text>
+        </NavLink>
+        <NavLink to={NavigationFn.MEN}>
           <Text variant="headerTitle">Men</Text>
-          <Text variant="headerTitle">Collection</Text>
-          <Text variant="headerTitle">Outlet</Text>
-        </HStack>
+        </NavLink>
+        <NavLink to={NavigationFn.ABOUT}>
+          <Text variant="headerTitle">About</Text>
+        </NavLink>
+        <NavLink to={NavigationFn.CONTACT_US}>
+          <Text variant="headerTitle">Contact us</Text>
+        </NavLink>
+        {/* <Text variant="headerTitle">Collection</Text> */}
+        {/* <Text variant="headerTitle">Outlet</Text> */}
       </HStack>
-      <HStack>
-        <Icon as={CartIcon} />
-        <Icon as={SearchIcon} />
+      <HStack spacing={8}>
         <Icon as={UserIcon} />
-        <Icon as={LikeIcon} />
+        <Icon as={CartIcon} />
+        <Icon as={MenuIcon} />
       </HStack>
     </HStack>
   );

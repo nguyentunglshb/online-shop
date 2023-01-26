@@ -1,5 +1,12 @@
 import { Box } from "@chakra-ui/react";
 
+import { Hero, NewArrivals } from "../components";
+
 export const HomePage = () => {
-  return <Box p={8}>Home</Box>;
+  return (
+    <Box>
+      <Hero />
+      <NewArrivals />
+    </Box>
+  );
 };
