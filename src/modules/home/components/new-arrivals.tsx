@@ -13,7 +13,7 @@ export const NewArrivals = () => {
       <Text variant="sectionSubTitle" pb={12}>
         Recently added shirts!
       </Text>
-      <Wrap spacingX={0}>
+      <Wrap spacingX={0} overflow="unset">
         {data?.data.map((product) => {
           return (
             <WrapItem key={product._id} w="25%">

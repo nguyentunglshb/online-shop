@@ -30,7 +30,15 @@ export const ProductCard = (props: ProductCardProps) => {
       pos="relative"
       bgColor="white"
     >
-      <Box w="100%" h="342px">
+      <Box
+        w="100%"
+        h="342px"
+        transition="0.3s ease-in-out"
+        _hover={{
+          transform: "translateY(-3px)",
+          // boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px;",
+        }}
+      >
         <Image src={headImageUrl} w="100%" h="100%" objectFit="contain" />
       </Box>
       <Text textAlign="center" variant="productName" pt={4} pb={2}>

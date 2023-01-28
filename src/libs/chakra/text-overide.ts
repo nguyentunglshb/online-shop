@@ -72,5 +72,24 @@ export const textOveride: ComponentStyleConfig = {
       color: colorOveride.neutral[5],
       textDecor: "line-through",
     },
+    benefitTitle: {
+      fontWeight: 700,
+      fontSize: "16px",
+      lineHeight: "25px",
+      textTransform: "uppercase",
+    },
+    promoTitle: {
+      fontWeight: 400,
+      fontSize: "32px",
+      lineHeight: "48px",
+      color: "white",
+      textTransform: "uppercase",
+    },
+    promoSubtitle: {
+      fontSize: "18px",
+      textAlign: "center",
+      color: "white",
+      fontWeight: 300,
+    },
   },
 };

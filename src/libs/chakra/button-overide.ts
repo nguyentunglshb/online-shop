@@ -50,5 +50,13 @@ export const buttonOveride = {
       borderRadius: 0,
       textTransform: "uppercase",
     },
+    promo: {
+      color: colorOveride.primary.primary,
+      textTransform: "uppercase",
+      p: "14px 36px",
+      bgColor: "white",
+      borderRadius: 0,
+      boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.04)",
+    },
   },
 };

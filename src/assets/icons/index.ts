@@ -11,3 +11,11 @@ export * from "./user";
 export * from "./like";
 
 export * from "./menu";
+
+export * from "./fingerprint";
+
+export * from "./freeship";
+
+export * from "./refund";
+
+export * from "./support";
