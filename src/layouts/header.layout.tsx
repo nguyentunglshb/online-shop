@@ -1,13 +1,16 @@
 import React, { useRef, useState, useEffect, memo } from "react";
-import { HStack, Icon, Text } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { Box, HStack, Icon, Text } from "@chakra-ui/react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { CartIcon, Images, MenuIcon, UserIcon } from "@/assets";
 import { NavigationFn } from "@/dictionary";
+import { getStoredAuth } from "@/libs";
 
 export const Header = memo(() => {
   const headerRef =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+
+  const navigate = useNavigate();
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -54,9 +57,22 @@ export const Header = memo(() => {
           {/* <Text variant="headerTitle">Outlet</Text> */}
         </HStack>
         <HStack spacing={8}>
-          <Icon as={UserIcon} />
-          <Icon as={CartIcon} />
-          <Icon as={MenuIcon} />
+          <Box
+            cursor="pointer"
+            onClick={() =>
+              navigate(
+                getStoredAuth() ? NavigationFn.PROFILE : NavigationFn.LOGIN
+              )
+            }
+          >
+            <Icon as={UserIcon} />
+          </Box>
+          <Box cursor="pointer">
+            <Icon as={CartIcon} />
+          </Box>
+          <Box cursor="pointer">
+            <Icon as={MenuIcon} />
+          </Box>
         </HStack>
       </HStack>
     </HStack>

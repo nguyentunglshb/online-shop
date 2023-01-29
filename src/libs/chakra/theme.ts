@@ -4,6 +4,7 @@ import { extendTheme } from "@chakra-ui/theme-utils";
 
 import { colorOveride } from "./colors-overide";
 import { linkOveride } from "./link-overide";
+import { tagOveride } from "./tag-overide";
 
 export const theme = extendTheme({
   styles: {
@@ -17,6 +18,7 @@ export const theme = extendTheme({
     Button: buttonOveride,
     Link: linkOveride,
     Text: textOveride,
+    Tag: tagOveride,
   },
   colors: colorOveride,
 });

@@ -1,17 +1,28 @@
 import { trackPromise } from "react-promise-tracker";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 
 import { ILoginForm } from "../models";
 import axiosClient from "@/libs/axios/axiosClient";
+import { ACCESS_TOKEN, setLocalStorage } from "@/libs";
+import { NavigationFn } from "@/dictionary";
 
-const loginRequest = (body: ILoginForm) =>
+interface Response {
+  access_token: string;
+}
+
+const loginRequest = (body: ILoginForm): Promise<Response> =>
   trackPromise(axiosClient.post("/auth/login", body));
 
 export const useMutationLogin = () => {
-  const mutation = useMutation({
+  const navigate = useNavigate();
+
+  return useMutation({
     mutationFn: loginRequest,
     mutationKey: "login",
+    onSuccess: (data: Response) => {
+      setLocalStorage(ACCESS_TOKEN, data.access_token);
+      navigate(NavigationFn.HOME);
+    },
   });
-
-  return { mutation };
 };

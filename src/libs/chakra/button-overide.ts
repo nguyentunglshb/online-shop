@@ -1,23 +1,14 @@
 import { colorOveride } from "./colors-overide";
 
 export const buttonOveride = {
-  // baseStyle: {
-  //   fontWeight: 400,
-  //   bg: "none",
-  //   bgColor: colorOveride.primary.primary,
-  //   color: "white",
-  //   outline: "none",
-  //   // outlineColor: colorOveride.primary.primary,
-  //   // outlineOffset: 0,
-  //   _hover: {
-  //     bg: "none",
-  //     bgColor: colorOveride.primary.light,
-  //   },
-  //   _active: {
-  //     bg: "none",
-  //     bgColor: colorOveride.primary.dark,
-  //   },
-  // },
+  baseStyle: {
+    fontWeight: 400,
+    bg: "none",
+    color: "black",
+    outline: "none",
+    p: "14px 36px",
+    borderRadius: 0,
+  },
   variants: {
     greyed: {
       bgColor: colorOveride.neutral[3],

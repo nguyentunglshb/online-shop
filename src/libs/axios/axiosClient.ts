@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// import queryString from "query-string";
+import { getStoredAuth } from "../helpers";
 
-const accessToken = localStorage.getItem("accessToken") || "";
+// import queryString from "query-string";
 
 const axiosClient = axios.create({
   // baseURL: "http://localhost:3000",
@@ -20,7 +20,7 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use((config: any) => {
-  config.headers["Authorization"] = `Bearer ${accessToken}`;
+  config.headers["Authorization"] = `Bearer ${getStoredAuth()}`;
   //   config.paramsSerializer = function (params: any) {
   //     return queryString.stringify(params, { arrayFormat: "bracket" });
   //   };

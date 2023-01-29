@@ -91,5 +91,12 @@ export const textOveride: ComponentStyleConfig = {
       color: "white",
       fontWeight: 300,
     },
+    trendingTitle: {
+      fontSize: "18px",
+      lineHeight: "40px",
+      textAlign: "center",
+      textTransform: "uppercase",
+      letterSpacing: "4px",
+    },
   },
 };

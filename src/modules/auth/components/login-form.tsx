@@ -31,9 +31,7 @@ export const LoginForm = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const { mutation } = useMutationLogin();
-
-  const { mutate } = mutation;
+  const { mutate } = useMutationLogin();
 
   const togglePassword = () => setShowPassword((prev) => !prev);
 

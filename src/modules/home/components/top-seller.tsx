@@ -1,20 +1,20 @@
 import React from "react";
-import { Box, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Button, Text, VStack, Wrap, WrapItem } from "@chakra-ui/react";
 
 import { useQueryGetNewArrtivals } from "../api";
 import { ProductCard } from "@/components";
 
-export const NewArrivals = () => {
+export const TopSeller = () => {
   const { data } = useQueryGetNewArrtivals();
 
   return (
-    <Box w="min(100%, 1280px)" m="0 auto" pt="42px">
-      <Text variant="sectionTitle">Discover NEW Arrivals</Text>
+    <VStack w="min(100%, 1280px)" m="0 auto" py="64px">
+      <Text variant="sectionTitle">Top Sellers</Text>
       <Text variant="sectionSubTitle" pb={12}>
-        Recently added shirts!
+        Browse our top-selling products
       </Text>
       <Wrap w="100%" spacingX={0} overflow="unset">
-        {data?.data.slice(0, 8).map((product) => {
+        {data?.data.slice(0, 4).map((product) => {
           return (
             <WrapItem key={product._id} w="25%">
               <ProductCard
@@ -29,6 +29,9 @@ export const NewArrivals = () => {
           );
         })}
       </Wrap>
-    </Box>
+      <Box pt="48px">
+        <Button variant="addToCart">Shop now</Button>
+      </Box>
+    </VStack>
   );
 };

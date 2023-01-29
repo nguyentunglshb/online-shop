@@ -15,4 +15,7 @@ export const colorOveride = {
     "7": "#EFEFEF",
   },
   orange: "#D6763C",
+  white: {
+    "1": "#F9F9F9",
+  },
 };
