@@ -1,10 +1,10 @@
 import { RouteObject } from "react-router";
 
-import { AuthLayout } from "@/layouts";
 import { Login, SignUp } from "@/modules";
+import { SignedInElement } from "./elements";
 
 export const authRouter = {
-  element: <AuthLayout />,
+  element: <SignedInElement />,
   children: [
     {
       path: "login",

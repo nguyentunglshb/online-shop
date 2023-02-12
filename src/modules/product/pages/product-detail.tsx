@@ -13,6 +13,30 @@ import { useParams } from "react-router-dom";
 import { useQueryGetProductDetail } from "../api";
 import { DescriptionReviewBox } from "../components";
 import { discountPercent, formatPrice } from "@/utils";
+import { CustomSelect, SelectOptionProps } from "@/components";
+
+const sizeOptions = [
+  {
+    label: "Small",
+    subLabel: "S",
+    value: "s",
+  },
+  {
+    label: "Medium",
+    subLabel: "M",
+    value: "m",
+  },
+  {
+    label: "Large",
+    subLabel: "L",
+    value: "l",
+  },
+  {
+    label: "Extra Large",
+    subLabel: "XL",
+    value: "xl",
+  },
+] as SelectOptionProps[];
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -55,6 +79,7 @@ export const ProductDetail = () => {
           )}
           <Text>{data?.data.content}</Text>
           <Box py={9}>
+            <CustomSelect options={sizeOptions} placeHolder="Select Size" />
             <Button variant="addToCart">Add to Cart</Button>
           </Box>
           <Box>
