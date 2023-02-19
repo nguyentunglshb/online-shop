@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, memo } from "react";
 import { Avatar, Box, HStack, Icon, Text } from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { CartIcon, Images, MenuIcon, UserIcon } from "@/assets";
 import { NavigationFn } from "@/dictionary";
@@ -35,7 +35,9 @@ export const Header = memo(() => {
       zIndex={99}
     >
       <HStack w="min(100%, 1589px)" m="0 auto" justify="space-between">
-        <Icon as={Images.logo} />
+        <Link to={NavigationFn.HOME}>
+          <Icon as={Images.logo} />
+        </Link>
 
         <HStack spacing={8} paddingTop="5px">
           <NavLink to={NavigationFn.HOME}>

@@ -11,6 +11,7 @@ export const CustomInput = forwardRef(
         {...props}
         ref={ref}
         focusBorderColor="primary.primary"
+        borderRadius={0}
       />
     );
   }

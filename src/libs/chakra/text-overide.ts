@@ -26,6 +26,11 @@ export const textOveride: ComponentStyleConfig = {
       textTransform: "uppercase",
       color: "white",
     },
+    pageTitle: {
+      color: "#fff",
+      fontSize: "48px",
+      fontWeight: 400,
+    },
     sectionTitle: {
       fontWeight: 700,
       fontSize: "36px",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   Box,
   Button,
@@ -10,14 +10,57 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
-import { useQueryGetProductDetail } from "../api";
+import { useMutationAddToCart, useQueryGetProductDetail } from "../api";
 import { DescriptionReviewBox } from "../components";
 import { discountPercent, formatPrice } from "@/utils";
+import { CustomSelect, SelectOptionProps } from "@/components";
+
+const sizeOptions = [
+  {
+    label: "Small",
+    subLabel: "S",
+    value: "s",
+  },
+  {
+    label: "Medium",
+    subLabel: "M",
+    value: "m",
+  },
+  {
+    label: "Large",
+    subLabel: "L",
+    value: "l",
+  },
+  {
+    label: "Extra Large",
+    subLabel: "XL",
+    value: "xl",
+  },
+] as SelectOptionProps[];
 
 export const ProductDetail = () => {
   const { id } = useParams();
 
   const { data } = useQueryGetProductDetail(id!);
+
+  const { mutate } = useMutationAddToCart(data?.data?.name ?? "");
+
+  const [selectedSize, setSelectedSize] = useState("");
+
+  const addToCart = useCallback(
+    () =>
+      mutate({
+        name: data?.data?.name ?? "",
+        price: data?.data?.currentPrice ?? 0,
+        productId: data?.data?._id ?? "",
+        quantity: 1,
+      }),
+    [data]
+  );
+
+  const handleSizeSelectChange = (value: string) => {
+    setSelectedSize(value);
+  };
 
   return (
     <Box w="min(100%, 1589px)" m="0 auto" pt={16}>
@@ -55,7 +98,18 @@ export const ProductDetail = () => {
           )}
           <Text>{data?.data.content}</Text>
           <Box py={9}>
-            <Button variant="addToCart">Add to Cart</Button>
+            {" "}
+            <CustomSelect
+              value={selectedSize}
+              options={sizeOptions}
+              placeHolder="Select Size"
+              onChange={handleSizeSelectChange}
+            />
+          </Box>
+          <Box pb={9}>
+            <Button variant="addToCart" onClick={addToCart}>
+              Add to Cart
+            </Button>
           </Box>
           <Box>
             <Text>
