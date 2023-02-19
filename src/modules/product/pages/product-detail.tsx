@@ -20,7 +20,7 @@ export const ProductDetail = () => {
   const { data } = useQueryGetProductDetail(id!);
 
   return (
-    <Box w="min(100%, 1589px)" m="0 auto" pb={8}>
+    <Box w="min(100%, 1589px)" m="0 auto" pt={16}>
       <Stack direction="row">
         <Box w="45%" pos="relative">
           <Image src={data?.data.headImageUrl} />

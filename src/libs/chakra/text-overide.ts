@@ -98,5 +98,15 @@ export const textOveride: ComponentStyleConfig = {
       textTransform: "uppercase",
       letterSpacing: "4px",
     },
+    profileLabel: {
+      fontSize: "18px",
+      fontWeight: 600,
+      textTransform: "uppercase",
+    },
+    profileInfo: {
+      fontSize: "36px",
+      fontWeight: 600,
+      color: "white",
+    },
   },
 };

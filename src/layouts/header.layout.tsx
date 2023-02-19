@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect, memo } from "react";
-import { Box, HStack, Icon, Text } from "@chakra-ui/react";
+import { Avatar, Box, HStack, Icon, Text } from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { CartIcon, Images, MenuIcon, UserIcon } from "@/assets";
 import { NavigationFn } from "@/dictionary";
-import { getStoredAuth } from "@/libs";
+import { getAvatar, getStoredAuth } from "@/libs";
 
 export const Header = memo(() => {
   const headerRef =
@@ -65,7 +65,11 @@ export const Header = memo(() => {
               )
             }
           >
-            <Icon as={UserIcon} />
+            {getAvatar() ? (
+              <Avatar src={getAvatar()} size="sm" />
+            ) : (
+              <Icon as={UserIcon} />
+            )}
           </Box>
           <Box cursor="pointer">
             <Icon as={CartIcon} />

@@ -8,6 +8,12 @@ export const getStoredAuth = <T>(): T | null => {
   return storedAuth ? (JSON.parse(storedAuth) as T) : null;
 };
 
+export const getAvatar = <T>(): T | undefined => {
+  if (!isClient) return undefined;
+  const avatarUrl = localStorage.getItem("avatarUrl");
+  return avatarUrl ? (JSON.parse(avatarUrl) as T) : undefined;
+};
+
 export const clearStoredAuth = () => {
   if (!isClient) return;
 
