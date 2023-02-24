@@ -7,3 +7,5 @@ export * from "./product";
 export * from "./user";
 
 export * from "./contact";
+
+export * from "./cart";

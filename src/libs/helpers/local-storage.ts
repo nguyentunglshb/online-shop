@@ -17,7 +17,7 @@ export const getAvatar = <T>(): T | undefined => {
 export const clearStoredAuth = () => {
   if (!isClient) return;
 
-  localStorage.removeItem(ACCESS_TOKEN);
+  localStorage.clear();
 };
 
 export const setLocalStorage = <T>(key: string, data: T) => {

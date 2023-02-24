@@ -16,4 +16,7 @@ export const NavigationFn = {
   SIGNUP: "/signup",
   FORGOTPASSWORD: "/forgotpassword",
   PROFILE: "/profile",
+
+  // cart
+  CART: "/cart",
 };

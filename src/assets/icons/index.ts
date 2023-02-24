@@ -21,3 +21,5 @@ export * from "./refund";
 export * from "./support";
 
 export * from "./chervon-up";
+
+export * from "./power-off";
