@@ -5,7 +5,27 @@ import { useQueryGetCart } from "../api";
 import { CartItem } from "../components";
 import { CustomTable } from "@/components";
 
-const headers: string[] = ["", "Product", "Price", "Quantity", "Total"];
+import type { CartItem as CartItemProps } from "../api";
+import { TableHeaderProps } from "@/components/widgets/table/table-header";
+
+const headers: TableHeaderProps<CartItemProps> = [
+  {
+    label: "Product",
+    value: "name",
+  },
+  {
+    label: "Price",
+    value: "price",
+  },
+  {
+    label: "Quantity",
+    value: "quantity",
+  },
+  {
+    label: "Total",
+    value: "subTotalPrice",
+  },
+];
 
 export const Cart = () => {
   const { data } = useQueryGetCart();
@@ -14,7 +34,10 @@ export const Cart = () => {
 
   return (
     <Box w="min(100%, 1589px)" m="0 auto" py={16}>
-      <CustomTable headers={headers} data={data?.data?.items ?? []} />
+      <CustomTable<CartItemProps>
+        headers={headers}
+        data={data?.data?.items ?? []}
+      />
       {data?.data?.items.map((item) => {
         return <CartItem key={item.productId} />;
       })}

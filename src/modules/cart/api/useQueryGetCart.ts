@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { HttpResponse } from "@/interface";
 import axiosClient from "@/libs/axios/axiosClient";
 
-type CartItem = {
+export type CartItem = {
   name: string;
   price: number;
   productId: string;
@@ -11,7 +11,7 @@ type CartItem = {
   subTotalPrice: number;
 };
 
-type Cart = {
+export type Cart = {
   _id: string;
   userId: string;
   items: CartItem[];

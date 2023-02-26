@@ -1,14 +1,21 @@
 import React from "react";
 import { Td, Thead, Tr } from "@chakra-ui/react";
 
-type TableHeaderProps = string[];
+export type TableHeaderProps<T> = {
+  label: string;
+  value: keyof T;
+}[];
 
-export const TableHeader = ({ headers }: { headers: TableHeaderProps }) => {
+export const TableHeader = <T,>({
+  headers,
+}: {
+  headers: TableHeaderProps<T>;
+}) => {
   return (
     <Thead>
       <Tr>
         {headers.map((h) => (
-          <Td key={h}>{h}</Td>
+          <Td key={h.label}>{h.label}</Td>
         ))}
       </Tr>
     </Thead>

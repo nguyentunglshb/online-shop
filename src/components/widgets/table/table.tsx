@@ -1,11 +1,11 @@
 import React from "react";
 import { Table, TableContainer } from "@chakra-ui/react";
 
-import { TableHeader } from "./table-header";
+import { TableHeader, TableHeaderProps } from "./table-header";
 import { TableBody } from "./table-body";
 
 type TableProps<T> = {
-  headers: string[];
+  headers: TableHeaderProps<T>;
   data: T[];
 };
 
@@ -17,11 +17,14 @@ export const CustomTable = <
   props: TableProps<T>
 ) => {
   const { headers, data } = props;
+
+  const tableProperty = headers.map((h) => h.value);
+
   return (
     <TableContainer>
       <Table>
-        <TableHeader headers={headers} />
-        <TableBody data={data} />
+        <TableHeader<T> headers={headers} />
+        <TableBody<T> data={data} tableProperty={tableProperty} />
       </Table>
     </TableContainer>
   );

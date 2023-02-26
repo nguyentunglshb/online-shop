@@ -10,7 +10,7 @@ import { NavigationFn } from "@/dictionary";
 interface Response {
   access_token: string;
   user: {
-    avatarUrl: string;
+    avatarUrl?: string;
   };
 }
 
@@ -25,7 +25,7 @@ export const useMutationLogin = () => {
     mutationKey: "login",
     onSuccess: (data: Response) => {
       setLocalStorage(ACCESS_TOKEN, data.access_token);
-      setLocalStorage("avatarUrl", data.user.avatarUrl);
+      setLocalStorage("avatarUrl", data.user.avatarUrl || "");
       navigate(NavigationFn.HOME);
     },
   });
