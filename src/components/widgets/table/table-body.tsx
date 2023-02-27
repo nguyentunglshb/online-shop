@@ -1,29 +1,40 @@
 import React from "react";
-import { Tbody, Td, Tr } from "@chakra-ui/react";
+import { Tbody, Td, Tr, Icon } from "@chakra-ui/react";
 
-type TableBodyProps<T> = {
-  tableProperty: (keyof T)[];
+import { ColumnDefinitionType } from "./table";
+import { CloseIcon } from "@/assets";
+
+type TableBodyProps<T, K extends keyof T> = {
   data: T[];
+  columns: ColumnDefinitionType<T, K>[];
+  hasCloseIcon?: boolean;
 };
 
-export const TableBody = <T extends { productId: string }>(
-  props: TableBodyProps<T>
+export const TableBody = <T, K extends keyof T>(
+  props: TableBodyProps<T, K>
 ) => {
-  const { data, tableProperty } = props;
+  const { columns, hasCloseIcon = false, data } = props;
 
-  console.log(tableProperty);
+  const rows = data.map((row, idx1) => {
+    return (
+      <Tr key={idx1}>
+        {hasCloseIcon && (
+          <Td>
+            <Icon as={CloseIcon} />
+          </Td>
+        )}
+        {columns.map((column, idx2) => {
+          return (
+            <Td key={idx2}>
+              {column.render
+                ? column.render(row)
+                : (row[column.key] as React.ReactNode)}
+            </Td>
+          );
+        })}
+      </Tr>
+    );
+  });
 
-  const renderRow = <T,>(dataSource: T) => {
-    return tableProperty.map((p, index) => {
-      return <Td key={index}>{(dataSource as Record<any, any>)[p]}</Td>;
-    });
-  };
-
-  return (
-    <Tbody>
-      {data.map((item) => (
-        <Tr key={item.productId}>{renderRow(item)}</Tr>
-      ))}
-    </Tbody>
-  );
+  return <Tbody>{rows}</Tbody>;
 };

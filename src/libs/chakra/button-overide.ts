@@ -49,5 +49,11 @@ export const buttonOveride = {
       borderRadius: 0,
       boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.04)",
     },
+    checkout: {
+      color: "white",
+      padding: "18px 36px",
+      bgColor: colorOveride.orange,
+      textTransform: "uppercase",
+    },
   },
 };

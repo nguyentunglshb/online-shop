@@ -19,4 +19,7 @@ export const NavigationFn = {
 
   // cart
   CART: "/cart",
+
+  // checkout
+  CHECK_OUT: "/checkout",
 };

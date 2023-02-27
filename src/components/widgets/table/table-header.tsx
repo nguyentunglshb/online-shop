@@ -1,21 +1,25 @@
 import React from "react";
-import { Td, Thead, Tr } from "@chakra-ui/react";
+import { Th, Thead, Tr } from "@chakra-ui/react";
 
-export type TableHeaderProps<T> = {
-  label: string;
-  value: keyof T;
-}[];
+import { ColumnDefinitionType } from "./table";
 
-export const TableHeader = <T,>({
-  headers,
-}: {
-  headers: TableHeaderProps<T>;
-}) => {
+export type TableHeaderProps<T, K extends keyof T> = {
+  columns: ColumnDefinitionType<T, K>[];
+  hasCloseIcon?: boolean;
+};
+
+export const TableHeader = <T, K extends keyof T>({
+  columns,
+  hasCloseIcon = false,
+}: TableHeaderProps<T, K>) => {
   return (
     <Thead>
       <Tr>
-        {headers.map((h) => (
-          <Td key={h.label}>{h.label}</Td>
+        {hasCloseIcon && <Th></Th>}
+        {columns.map((h) => (
+          <Th w={h.width} key={h.key as string}>
+            {h.header}
+          </Th>
         ))}
       </Tr>
     </Thead>

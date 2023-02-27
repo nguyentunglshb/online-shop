@@ -4,7 +4,7 @@ export const linkOveride = {
   baseStyle: {
     fontWeight: 500,
     fontSize: "14px",
-    // color: colorOveride.primary.primary,
+    color: colorOveride.primary.primary,
     _hover: {
       textDecoration: "none",
     },

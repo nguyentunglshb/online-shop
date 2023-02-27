@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 
 import { ProtectedElement } from "./elements";
-import { ProfilePage, Cart } from "@/modules";
+import { ProfilePage, Cart, CheckoutPage } from "@/modules";
 
 export const protectedRoutes = {
   element: <ProtectedElement />,
@@ -13,6 +13,10 @@ export const protectedRoutes = {
     {
       path: "cart",
       element: <Cart />,
+    },
+    {
+      path: "checkout",
+      element: <CheckoutPage />,
     },
   ],
 } as RouteObject;

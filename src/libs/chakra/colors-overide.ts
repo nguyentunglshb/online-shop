@@ -13,6 +13,7 @@ export const colorOveride = {
     "3": "#ACACAC",
     "5": "#818181",
     "7": "#EFEFEF",
+    "9": "#EBEBEB",
   },
   orange: "#D6763C",
   white: {
